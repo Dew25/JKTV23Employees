@@ -1,17 +1,15 @@
 package ee.ivkhkdev;
 
-import ee.ivkhkdev.intefaces.Input;
-import ee.ivkhkdev.tools.ConsoleInput;
+
+
+import ee.ivkhkdev.model.Employee;
+import ee.ivkhkdev.service.EmployeeService;
 
 import java.util.Scanner;
 
 public class App {
-    private Input input;
-
-    public App() {
-        this.input = new ConsoleInput(new Scanner(System.in));
-    }
-
+    public static Employee[] employees = new Employee[10];
+    private Scanner scanner = new Scanner(System.in);
     public void run() {
         System.out.println("Программа \"Работники\"");
         boolean repeat = true;
@@ -20,8 +18,7 @@ public class App {
             System.out.println("0. Выход из программы");
             System.out.println("1. Добавить пользователя");
             System.out.print("Введите номер задачи: ");
-            Scanner scanner = new Scanner(System.in);
-            int task = input.nextInt();
+            int task = scanner.nextInt();
             scanner.nextLine();
             switch (task) {
                 case 0:
@@ -30,6 +27,10 @@ public class App {
                     break;
                 case 1:
                     System.out.println("Добавление пользователя");
+                    EmployeeService employeeService = new EmployeeService();
+                    if(employeeService.createEmployee()){
+                        System.out.println("Пользователь добавлен");
+                    };
                     break;
                 default:
                     System.out.println("Выбирайте из списка задач!");

@@ -1,37 +1,18 @@
 package ee.ivkhkdev;
 
-import ee.ivkhkdev.intefaces.Input;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.io.*;
-import java.util.Scanner;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AppTest {
-    InputStream inputMock;
-    InputStream defaultIn;
-    OutputStream defaultOut;
-    @BeforeEach
-    void setUp() {
-        defaultIn = System.in;
-        defaultOut = System.out;
-        inputMock = Mockito.mock(Input.class);
-    }
 
-    @AfterEach
-    void tearDown() {
-
-        System.setIn(defaultIn);
-        System.setOut((PrintStream) defaultOut);
-    }
     @Test
     public void testRunExit() {
-        when(inputMock.read()).thenReturn(0);
         String input = "0\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -44,7 +25,6 @@ class AppTest {
     }
     @Test
     public void testRunTask1() {
-
         String input = "1\n0\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -53,6 +33,6 @@ class AppTest {
         App app = new App();
         app.run();
         String output = out.toString();
-        assertTrue(output.contains("Добавление пользователя"));
+        assertTrue(output.contains("Пользователь добавлен"));
     }
 }

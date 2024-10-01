@@ -1,24 +1,26 @@
 package ee.ivkhkdev.tools;
 
+import ee.ivkhkdev.interfaces.EmployeeProvider;
+import ee.ivkhkdev.interfaces.InputProvider;
 import ee.ivkhkdev.model.Employee;
 import ee.ivkhkdev.model.Person;
 
 import java.util.Scanner;
 
-public class InputEmployee {
-    private Scanner scanner = new Scanner(System.in);
-    public Employee newEmployee(){
+public class InputEmployee implements EmployeeProvider {
+
+    public Employee newEmployee(InputProvider inputProvider){
         Employee employee = new Employee();
         Person person = new Person();
         System.out.print("Имя: ");
-        person.setFirstname(scanner.nextLine());
+        person.setFirstname(inputProvider.getInput());
         System.out.print("Фамилия: ");
-        person.setLastname(scanner.nextLine());
+        person.setLastname(inputProvider.getInput());
         employee.setPerson(person);
         System.out.print("Должность: ");
-        employee.setPosition(scanner.nextLine());
+        employee.setPosition(inputProvider.getInput());
         System.out.print("Зарплата: ");
-        employee.setSalary(scanner.nextLine());
+        employee.setSalary(inputProvider.getInput());
         return employee;
     }
 }

@@ -25,8 +25,8 @@ public class App {
         do {
             System.out.println("Список задач:");
             System.out.println("0. Выход из программы");
-            System.out.println("1. Добавить пользователя");
-            System.out.println("2. Список пользователей");
+            System.out.println("1. Добавить работника");
+            System.out.println("2. Список работников");
             System.out.print("Введите номер задачи: ");
             int task = Integer.parseInt(inputProvider.getInput());
             switch (task) {

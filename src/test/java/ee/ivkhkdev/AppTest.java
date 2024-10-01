@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class AppTest {
-    PrintStream defauleOut;
+    PrintStream defaultOut;
     ByteArrayOutputStream out;
     InputProvider mockInputProvider;
     EmployeeProvider mockEmployeeProvider;
@@ -27,7 +27,7 @@ class AppTest {
         mockInputProvider = mock(InputProvider.class);
         mockEmployeeProvider = mock(EmployeeProvider.class);
         employeeHandler = new EmployeeHandler(mockInputProvider,mockEmployeeProvider);
-        defauleOut = System.out;
+        defaultOut = System.out;
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
     }
@@ -62,7 +62,7 @@ class AppTest {
         App app = new App(employeeHandler,mockEmployeeProvider,mockInputProvider);
         app.run();
         String output = out.toString();
-        System.setOut(defauleOut);
+        System.setOut(defaultOut);
         System.out.println(output);
         assertTrue(output.contains("До свидания! :)"));
         assertTrue(App.employees[0] != null);
@@ -77,8 +77,9 @@ class AppTest {
         App app = new App(employeeHandler,mockEmployeeProvider,mockInputProvider);
         app.run();
         String output = out.toString();
-        System.setOut(defauleOut);
+        System.setOut(defaultOut);
         System.out.println(output);
+        assertTrue(output.contains("Иван"));
         assertTrue(output.contains("До свидания! :)"));
     }
 }

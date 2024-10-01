@@ -33,6 +33,7 @@ public class EmployeeHandler {
 
     public void listEmployees() {
         for (int i = 0; i < App.employees.length; i++){
+            if(App.employees[i] == null) continue;
             Employee employee = App.employees[i];
             System.out.printf("%d. %s %s. %s. %s.%n",
                     i+1,

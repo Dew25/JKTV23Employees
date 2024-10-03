@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/interfaces/impl/ConsoleInput.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/interfaces/Input.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/model/Employee.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/model/Person.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/service/EmployeeService.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/tools/InputEmployee.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/App.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/main/java/ee/ivkhkdev/Main.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/src/test/java/ee/ivkhkdev/AppTest.java;C:/Users/melnikov/IdeaProjects/JKTV23Employees/pom.xml" />
+  </component>
+</project>

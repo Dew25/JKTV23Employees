@@ -1,4 +1,4 @@
-package ee.ivkhkdev.tools;
+package ee.ivkhkdev.intefaces.impl;
 
 import ee.ivkhkdev.intefaces.Input;
 
@@ -7,16 +7,11 @@ import java.util.Scanner;
 public class ConsoleInput  implements Input {
     private Scanner scanner;
 
-    public ConsoleInput(Scanner scanner) {
-        this.scanner = scanner;
+    public ConsoleInput() {
+        this.scanner = new Scanner(System.in);
     }
 
-    @Override
-    public int nextInt() {
-        return scanner.nextInt();
-    }
-
-    @Override
+   @Override
     public String nextLine() {
         return scanner.nextLine();
     }

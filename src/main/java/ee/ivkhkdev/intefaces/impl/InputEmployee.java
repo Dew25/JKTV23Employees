@@ -49,7 +49,7 @@ public class InputEmployee implements EmployeeProvider {
             if(employee != null){
                 System.out.printf("%d. %s %s. %s. %s%n",
                         i+1,
-                        employee.getPerson().getLastname(),
+                        employee.getPerson().getFirstname(),
                         employee.getPerson().getLastname(),
                         employee.getPosition(),
                         employee.getSalary()

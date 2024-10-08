@@ -1,5 +1,6 @@
 package ee.ivkhkdev;
 
+import ee.ivkhkdev.intefaces.EmployeeRepository;
 import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.intefaces.impl.ConsoleInput;
 import ee.ivkhkdev.model.Employee;
@@ -8,14 +9,17 @@ import ee.ivkhkdev.services.EmployeeService;
 import java.util.Scanner;
 
 public class App {
-    public static Employee[] employees = new Employee[100];
+    public static Employee[] employees;
+    private final EmployeeRepository employeeRepository;
 
     private Input input;
     private final EmployeeService employeeService;
 
-    public App(Input input, EmployeeService employeeService) {
+    public App(Input input, EmployeeService employeeService, EmployeeRepository employeeRepository) {
         this.input = input;
         this.employeeService = employeeService;
+        this.employeeRepository = employeeRepository;
+        employees = employeeRepository.loadEmployees();
     }
 
     public void run() {
@@ -35,13 +39,15 @@ public class App {
                     break;
                 case 1:
                     System.out.println("Добавление сотрудника");
-                    if(employeeService.createEmployee(input)){
+                    if(employeeService.createEmployee(input,employeeRepository)){
                         System.out.println("Сотрудник добавлен");
                     }
                     break;
                 case 2:
                     System.out.println("Список сотрудников");
-                    employeeService.printListEmployees(input);
+                    if(employeeService.printListEmployees(input)){
+                        System.out.println("Конец списка");
+                    };
                     break;
                 default:
                     System.out.println("Выбирайте из списка задач!");

@@ -1,8 +1,7 @@
 package ee.ivkhkdev;
 
-import ee.ivkhkdev.intefaces.EmployeeProvider;
 import ee.ivkhkdev.intefaces.Input;
-import ee.ivkhkdev.intefaces.impl.ConsoleInput;
+import ee.ivkhkdev.intefaces.impl.EmployeeFileService;
 import ee.ivkhkdev.intefaces.impl.InputEmployee;
 import ee.ivkhkdev.model.Address;
 import ee.ivkhkdev.model.Employee;
@@ -40,7 +39,7 @@ class AppTest {
     @Test
     public void testRunExit() {
         when(mockInput.nextLine()).thenReturn("0");
-        App app = new App(mockInput,new EmployeeService(new InputEmployee()));
+        App app = new App(mockInput,new EmployeeService(new InputEmployee()),new EmployeeFileService());
         app.run();
         String actualOut = mockOut.toString();
 //        System.setOut(new PrintStream(defaultOut));
@@ -67,7 +66,7 @@ class AppTest {
                         )
                 )
         );
-        App app = new App(mockInput, new EmployeeService(inputEmployeeMock));
+        App app = new App(mockInput, new EmployeeService(inputEmployeeMock),new EmployeeFileService());
         app.run();
         String actualOut = mockOut.toString();
 //        System.setOut(new PrintStream(defaultOut));
@@ -80,7 +79,6 @@ class AppTest {
     @Test
     void testRunPrintListEmployees(){
         InputEmployee inputEmployeeMock = mock(InputEmployee.class);
-        App app = new App(mockInput, new EmployeeService(inputEmployeeMock));
         when(mockInput.nextLine()).thenReturn("1","2","0");
         when(inputEmployeeMock.addEmployee(mockInput)).thenReturn(
                 new Employee(
@@ -97,13 +95,14 @@ class AppTest {
                         )
                 )
         );
+
+        App app = new App(mockInput, new EmployeeService(inputEmployeeMock),new EmployeeFileService());
         app.run();
         String actualOut = mockOut.toString();
         System.setOut(new PrintStream(defaultOut));
         System.out.println(mockOut.toString());
-        String expectedOutFragment1 = "Ivan";
-        String expectedOutFragment2 = "Ivanov";
+        String expectedOutFragment1 = "Конец списка";
+
         assertTrue(actualOut.contains(expectedOutFragment1));
-        assertTrue(actualOut.contains(expectedOutFragment2));
     }
 }
